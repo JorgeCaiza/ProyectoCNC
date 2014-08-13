@@ -1,5 +1,6 @@
 //******************************************************************************
 //La logica de los graficos en el Display
+//En esta clase se renderizan los objetos.
 //******************************************************************************
 
 /**
@@ -18,6 +19,7 @@ var k, i = 0;
  * @param {type} height
  * @returns {GraphicDisplay}
  */
+//linea de prueba.
 function GraphicDisplay(displayName, width, height) {
 	// Enumerate all available modes
 	this.MODES = {
@@ -1678,6 +1680,7 @@ GraphicDisplay.prototype.getDistance = function(x1, y1, x2, y2) {
  * *****************************************************************************
  * @returns {Array}
  */
+// en base a este metodo hay que crear uno que encuentre el objeto en cualquier parte 
 GraphicDisplay.prototype.findIntersectionObject = function(){
         
         this.selectedComponent = this.findIntersectionWith(
@@ -1693,8 +1696,8 @@ GraphicDisplay.prototype.findIntersectionObject = function(){
                                     this.temporaryIntersectionsPoinst[3] = this.logicDisplay.components[this.selectedComponent].y2;
                                     
                                     
-                                    if (this.temporaryIntersectionsPoinst[0] === this.getCursorXLocal() 
-                                            && this.temporaryIntersectionsPoinst[1] === this.getCursorYLocal()){
+                                    if (this.temporaryIntersectionsPoinst[0] == this.getCursorXLocal() 
+                                            && this.temporaryIntersectionsPoinst[1] == this.getCursorYLocal()){
                                         
                                                   //  this.tooltip = this.temporaryIntersectionsPoinst[0] + " | " 
                                                         //    + -this.temporaryIntersectionsPoinst[1];
@@ -1727,6 +1730,8 @@ GraphicDisplay.prototype.findIntersectionObject = function(){
  * @param {type} y
  * @returns {Number|GraphicDisplay.prototype.findIntersectionWith@pro;logicDisplay@pro;components@pro;length}
  */
+// x y y son las coordenadas del puntero 
+// this.logicDisplay.components.length son los componentes
 GraphicDisplay.prototype.findIntersectionWith = function(x, y) {
 	for ( var i = this.logicDisplay.components.length - 1; i >= 0; i-- ) {
 		if (!this.logicDisplay.components[i].isActive())
