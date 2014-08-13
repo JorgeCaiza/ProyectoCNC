@@ -8,7 +8,7 @@
  * of the CAD
  */
 // habilita funciones de grafico
-// este es el de trabajo
+
 var k, i = 0;
 /**
  * *****************************************************************************
@@ -20,6 +20,7 @@ var k, i = 0;
  * @returns {GraphicDisplay}
  */
 //linea de prueba.
+
 function GraphicDisplay(displayName, width, height) {
 	// Enumerate all available modes
 	this.MODES = {
@@ -151,10 +152,11 @@ GraphicDisplay.prototype.init = function() {
 	this.logicDisplay = new LogicDisplay();
 	this.logicDisplay.init();
         //Inicializa la logica de codexg
+        /*
         this.codexgYAML = new Codexg();
         this.codexgYAML.init();
         console.log('nombre de cut: '+JSON.stringify(this.codexgYAML));
-        
+        */
 	//alert(this.logicDisplay.exportJSON());
         //this.logicAjax = new LogicAjax();
         //this.logicAjax.init(this.logicDisplay.exportJSON());

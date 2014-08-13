@@ -6,9 +6,7 @@
  */                                
 var respuesta;
 $(document).ready(function() {
-    //Este es el cambio que vamos hacer, en  la primera parte se modifica en sus repositorios
-    //esto se hace con un push, y para agregarlo al proyecto de epnmecanica se hace con un pull
-    alert('los archivos de resources es donde jorge y alejandra deben trabajar');
+    
      
         var gd = new GraphicDisplay("CADCanvas", 800, 600);
         gd.camX = -750;
@@ -29,6 +27,7 @@ $(document).ready(function() {
         } else {
           alert('Su navegador no es compatible con nuestra arquitectura.');
         }
+        /*
          var f = [{"active":true,
                             "type":2,
                             "color":"blue",
@@ -62,6 +61,7 @@ $(document).ready(function() {
                             "x":484,
                             "y":-968,
                             "text":"hola"}];
+    */
        
         
         
