@@ -1007,12 +1007,12 @@ GraphicDisplay.prototype.performAction = function(e, action) {
                                         
 				} else if (this.temporaryComponentType === COMPONENT_TYPES.POINT) {
 					 this.temporaryCoorFirst = this.findIntersectionObject();                                    
-                                    if (this.findIntersectionWith(this.getCursorXLocal(),this.getCursorYLocal()) !== null){
-                                        this.tooltip = "interseccion";
+                                    if (this.findIntersectionWith(this.getCursorXLocal(),this.getCursorYLocal()) !== null || this.interseccion(this.getCursorXLocal(),this.getCursorYLocal())!=null ){
+                                       // this.temporaryPoints[0] = this.temporaryCoorFirst[0];
+					//this.temporaryPoints[1] = this.temporaryCoorFirst[1];
+                                        this.tooltip = "intersecciones";
                                         
-                                        this.temporaryPoints[0] = this.temporaryCoorFirst[0];
-					this.temporaryPoints[1] = this.temporaryCoorFirst[1];
-                                    }else{
+                        }else{
                                         this.tooltip = "no inter";
                                         this.temporaryPoints[0] = this.getCursorXLocal();
                                         this.temporaryPoints[1] = this.getCursorYLocal();
@@ -1080,7 +1080,8 @@ GraphicDisplay.prototype.performAction = function(e, action) {
 			this.cvn.css('cursor', 'default');
 			if (action === this.MOUSEACTION.MOVE) {
 				if (this.temporaryComponentType === null) {
-					this.temporaryComponentType = COMPONENT_TYPES.POINT;
+				
+                    this.temporaryComponentType = COMPONENT_TYPES.POINT;
 				} else if (this.temporaryComponentType === COMPONENT_TYPES.POINT) {
 					this.temporaryPoints[0] = this.getCursorXLocal();
 					this.temporaryPoints[1] = this.getCursorYLocal();
@@ -1590,6 +1591,8 @@ GraphicDisplay.prototype.setJSON = function(fileJson){
 GraphicDisplay.prototype.getJSON = function(){
         return(this.logicDisplay.exportJSON());      
 };
+
+//obtiene los elementos
 GraphicDisplay.prototype.getObjects = function(){
         return(this.logicDisplay.exportObject());      
 };
@@ -1722,6 +1725,38 @@ GraphicDisplay.prototype.findIntersectionObject = function(){
                                 return null;
 };
 
+GraphicDisplay.prototype.interseccion = function(x,y){    
+    var vector= new Array();    
+    var pendiente=0;
+    var x1,x2,y1,y2;
+    vector=this.getObjects();
+    var tamaño=vector.length;
+    console.log("grupo");
+    for(var i=0;i<tamaño;i++){
+    var obj=vector[i];
+    x1=obj.x1.valueOf();
+    y1=obj.y1.valueOf();
+    x2=obj.x2.valueOf();
+    y2=obj.y2.valueOf();
+    pendiente= (y2-y1)/(x2-x1);
+    //pendiente=pendiente*100;
+    pendiente=pendiente.toFixed(2);
+   // pendiente=pendiente/100;
+    var calculada;
+    calculada=(y2-y)/(x2-x);
+   // calculada=calculada*100;
+    calculada=calculada.toFixed(2);
+    
+    
+    // if(obj.type.valueOf() == 2){
+    console.log(calculada+"  pendiente calculada = "+ pendiente);
+    if(calculada== pendiente /*&& y<y1 && x<x1 && y>y2 && x>x2*/){
+    return 1;
+    console.log("hay interseccion")
+            }
+}
+   };
+
 // TODO: Move in Utils.
 
 /**
@@ -1748,6 +1783,8 @@ GraphicDisplay.prototype.findIntersectionWith = function(x, y) {
 					return i;
 				break;
 			case COMPONENT_TYPES.LINE:
+                          //  return this.interseccion(x,y);
+        
 			case COMPONENT_TYPES.CIRCLE:
 			case COMPONENT_TYPES.RECTANGLE:
 			case COMPONENT_TYPES.MEASURE:
@@ -1758,6 +1795,8 @@ GraphicDisplay.prototype.findIntersectionWith = function(x, y) {
 				break;
 		}
 	}
+        
+        
 	
 	return null;
 };
