@@ -190,7 +190,7 @@
               ilapiz.attr({fill: colors, stroke: "none"});
           }).click(function () {
               avisoEntrada('Vas a usar la herramienta de lineas');
-            gd.setMode(gd.MODES.ADDLINE);
+           gd.setMode(gd.MODES.ADDLINE);
             console.log('se selecciona Linea');
           });
           iback.mousemove(function(){
@@ -222,10 +222,12 @@
           }).click(function () {
               console.log('se selecciona Wizard!!');
               
-              
-               /*             
-              var ksk =gd.getObjects();
-              ksk.componentes = "hola";
+              //trae la lista de objetos
+                            
+             // var ksk =new Array();
+           //  console.log(gd.interseccion());
+              //console.log(ksk);
+          /*ksk.componentes = "hola";
               var yaml = '';
               var points = '';
               yaml = "name: cut_demo "+ "\n" +
@@ -276,6 +278,7 @@
                     avisoEntrada('Vamos a enviar la informacion al servidor. Estas de acuerdo?');
                     //alert(sendAjax(gd.getJSON()));
                     sendAjax(gd.getJSON());
+                    
                   /*
                     var x = document.createElement("TEXTAREA");
                     

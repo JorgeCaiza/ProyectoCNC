@@ -1749,7 +1749,7 @@ GraphicDisplay.prototype.interseccion = function(x,y){
     
     
     // if(obj.type.valueOf() == 2){
-    console.log(calculada+"  pendiente calculada = "+ pendiente);
+    console.log(calculada+"  pendiente calculada = "+ pendiente+"x1"+x1+"x2"+x2+"x"+x+"y1"+y1+"y1"+y1);
     if(calculada== pendiente /*&& y<y1 && x<x1 && y>y2 && x>x2*/){
     return 1;
     console.log("hay interseccion")

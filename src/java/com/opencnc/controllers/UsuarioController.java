@@ -55,6 +55,7 @@ public class UsuarioController {
                                     HttpServletResponse response) throws IOException{
         HttpSession sess =  request.getSession();
         if (sess != null){
+            
             Session  s = HibernateUtil.getSessionFactory().openSession();
         
             Criteria  c =s.createCriteria(Usuario.class);
